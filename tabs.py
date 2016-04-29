@@ -5,13 +5,27 @@ import urllib.request
 from lxml import etree
 from lxml.html import fromstring, tostring
 import re
+import signal
+import sys
+
+
+def signal_handler(signal, frame):
+        sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
 
 
 def get_html(url):
-    response = urllib.request.urlopen(url)
-    html = response.read()
-    response.close()
-    return html
+	html = ""
+	try:
+		response = urllib.request.urlopen(url)
+		html = response.read()
+		response.close()
+	except urllib.error.HTTPError as err:
+		print("Tab not found")
+		main()
+	finally:
+		return html
+
 
 
 def parse_html(html, url, xpt):
