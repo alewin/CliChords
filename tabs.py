@@ -57,9 +57,9 @@ def main():
       except: pass
     search = int(input("Select song >> "))
     selected = tabs[search]
-    read_tab(selected["link"])
+    tab = read_tab(selected["link"])
 
-    tab = str(tab.replace("\\n", "\n").replace("\r",""))
+    tab = str(tab).replace("\\n", "\n").replace("\\r","").replace("\\'","'")
     print("------------ START TAB --------------")
     print(tab)
     print("------------- END TAB ---------------")
