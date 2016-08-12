@@ -70,7 +70,7 @@ def main():
             print(bcolors.FAIL + "No tab found"+ bcolors.ENDC)
             exit()
         for i, tab in enumerate(tabs.result):
-            print(str(i) + ") " + tabs.result[i].get("artist") + " - " + tabs.result[i].get("name") + " | " + tabs.result[i].get("type"))
+            print(str(i) + ") " + tabs.result[i].get("artist") + " - " + tabs.result[i].get("name") + " | " + tabs.result[i].get("type") + " | " + tabs.result[i].get("rating"))
 
         search = int(input(bcolors.WARNING + "Select song >> "+ bcolors.ENDC))
         taburl = tabs.result[search].get("url")
