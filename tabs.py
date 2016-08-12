@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # coding=utf-8
 # -*- coding: utf-8 -*-
-# TODO clean code
+# TODO clean code + add color to chords
 
 
 import re
@@ -11,6 +11,17 @@ from lxml import objectify, etree
 from lxml.html import tostring
 import warnings
 warnings.simplefilter(action = "ignore", category = FutureWarning)
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 
 
 def search_tabs(query):
@@ -24,8 +35,8 @@ def search_tabs(query):
 
 def get_tab(taburl):
     tab = requests.get(taburl).text
-    tab = re.sub('<span class="line_end">|<span>|</span>|<i>|</i>|</pre>|', "", tab)
-    tab = str(tab).replace("\\n", "\n").replace("\\r", "").replace("\\t", "").replace("\\'", "'").replace("[ch]","").replace("[/ch]","")
+    tab = re.sub('\\r|\\t|<pre>|<span class="line_end">|<span>|</span>|<i>|</i>|</pre>|', "", tab)
+    tab = str(tab).replace("\\n", "\n").replace("[ch]","").replace("[/ch]","")
     return tab
 
 
@@ -37,31 +48,31 @@ def show_tab(tab):
 
 
 def main():
-    print("""
+    print(bcolors.WARNING + """
                ______  _  _   ______  _                       _
               / _____)| |(_) / _____)| |                     | |
               | /      | | _ | /      | | _    ___    ____  _ | |  ___
               | |      | || || |      | || \  / _ \  / ___)/ || | /___)
               | \_____ | || || \_____ | | | || |_| || |   ( (_| ||___ |
                \______)|_||_| \______)|_| |_| \___/ |_|    \____|(___/
-        """)
+        """+ bcolors.ENDC)
 
     if len(sys.argv) > 1:
         tabs = search_tabs(sys.argv[1])
         if not tabs:
-            print("No tab found")
+            print(bcolors.FAIL + "No tab found"+ bcolors.ENDC)
             exit()
         tab = get_tab(tabs.result[0].get('url'))
     else:
-        search = input("Please enter artist name or song >> ")
+        search = input(bcolors.WARNING + "Please enter artist name or song >> "+ bcolors.ENDC)
         tabs = search_tabs(search)
         if len(tabs.result) == 0:
-            print("No tab found")
+            print(bcolors.FAIL + "No tab found"+ bcolors.ENDC)
             exit()
         for i, tab in enumerate(tabs.result):
             print(str(i) + ") " + tabs.result[i].get("artist") + " - " + tabs.result[i].get("name") + " | " + tabs.result[i].get("type"))
 
-        search = int(input("Select song >> "))
+        search = int(input(bcolors.WARNING + "Select song >> "+ bcolors.ENDC))
         taburl = tabs.result[search].get("url")
         tab = get_tab(taburl)
     show_tab(tab)
