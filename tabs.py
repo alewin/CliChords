@@ -35,7 +35,7 @@ def search_tabs(query):
 
 def get_tab(taburl):
     tab = requests.get(taburl).text
-    tab = re.sub('\\r|\\t|<pre>|<span class="line_end">|<span>|</span>|<i>|</i>|</pre>|', "", tab)
+    tab = re.sub('\\r|\\t|<pre>|<span class="line_end">|<span>|</span>|<i>|</i>|</pre>|', "", tab).encode('utf-8') # .encode avoids UnicodeEncodeError
     tab = str(tab).replace("\\n", "\n").replace("[ch]","").replace("[/ch]","")
     return tab
 
