@@ -6,8 +6,6 @@ CliChords is a command line tool that allows you to search and view guitar tabs.
 
 CliChords requires [Node.js](https://nodejs.org/) to run.
 
-Install the dependencies:
-
 ```sh
 $ git clone https://github.com/alewin/CliChords
 $ cd CliChords
@@ -18,6 +16,10 @@ $ node clichords
 
 
 ### Usage
+
+[![asciicast](https://asciinema.org/a/Gg7Qv6mUAXQlA4GLxZjZWDA4F.png)](https://asciinema.org/a/Gg7Qv6mUAXQlA4GLxZjZWDA4F)
+
+
 Start CliChords:
 ```sh
 $ node clichords

@@ -79,7 +79,6 @@ function searchTab(name) {
       properties: {
         ID: {
           description: 'Enter the ID of the Tab',
-          pattern: /^\w+$/,
           required: true,
           type: "integer"
         }
@@ -102,8 +101,7 @@ function init() {
     properties: {
       search: {
         required: true,
-        description: 'Enter the name of the artist or title of the tab',
-        pattern: /^\w+$/
+        description: 'Enter the name of the artist or title of the tab'
       }
     }
   };
