@@ -1,0 +1,37 @@
+{
+  "name": "cli-chords",
+  "version": "1.0.0",
+  "description": "Show ultimate-guitar.com guitar tabs and chords in your terminal - command line cli ",
+  "main": "clichords.js",
+  "dependencies": {
+    "ultimate-guitar-scraper": "^1.0.1",
+    "cli-table2": "^0.2.0",
+    "colors": "^1.1.2",
+    "express": "^4.16.2",
+    "prompt": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alewin/CliChords.git"
+  },
+  "keywords": [
+    "guitar",
+    "ultimate-guitar",
+    "tab",
+    "chords",
+    "bass",
+    "accordi",
+    "chitarra",
+    "tabulature"
+  ],
+  "author": "Alessio Koci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alewin/CliChords/issues"
+  },
+  "homepage": "https://github.com/alewin/CliChords#readme"
+}
