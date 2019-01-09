@@ -2,14 +2,14 @@
 
 CliChords is a command line tool that allows you to search and view guitar tabs.
 
-### Installation
+### Install
 
-CliChords requires [Node.js](https://nodejs.org/) to run.
+CliChords requires [Node.js](https://nodejs.org/) to start.
 
 ```sh
 $ git clone https://github.com/alewin/CliChords
 $ cd CliChords
-$ npm install 
+$ npm install / yarn install
 $ node clichords
 ```
 
